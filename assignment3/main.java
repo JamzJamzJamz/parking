@@ -68,18 +68,14 @@ public class main {
                     //Enter
                     car enterCar = findCar(lineRead.nextInt());
                     int j = 0;
-                    boolean carParked = false;
-                    while(carParked == false && j < lots.size()) {
-                        carParked = lots.get(j).carEnter(enterCar);
+                    while(!enterCar.enterLot(lots.get(j))) {
                         j++;
                     }
-                    
                     break;
                 case 2:
                     //Exit
                     car exitCar = findCar(lineRead.nextInt());
-                    parkingLot exitLot = exitCar.getLot();
-                    exitLot.carExit(exitCar);
+                    exitCar.exitLot();
                     break;
                 case 3:
                     //Wait

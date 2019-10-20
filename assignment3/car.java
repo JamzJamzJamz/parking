@@ -37,7 +37,22 @@ public class car {
         return lotTicket != null;
     }
 
+    public boolean enterLot(parkingLot entering) {
+        if(occupying == null) {
+            return entering.carEnter(this);
+        } else {
+            System.out.printf("Car %d cannot enter lot %d, already occupying a lot\n", ID, entering.getID());
+            return false;
+        }
+    }
 
+    public void exitLot() {
+        if(occupying != null) {
+            occupying.carExit(this);
+        } else {
+            System.out.printf("Car %d cannot exit, not occupying a lot\n", ID);
+        }
+    }
     
     
 }

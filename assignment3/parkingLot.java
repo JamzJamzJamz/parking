@@ -54,19 +54,31 @@ public class parkingLot {
     //Will take the ticket from the car
     //Will price based on how long it stayed
     public void carExit(car customer) {
-        ticket givenTicket = customer.getTicket();
-        LocalDateTime currentTime = LocalDateTime.now();
-        Long difference = Duration.between(givenTicket.getEntryTime(), currentTime).getSeconds();
-        double price = difference*0.10;
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        revenue += price;
-        System.out.printf("Car %d has exited lot %d at %tT, it paid %s\n", givenTicket.getCar(), ID, currentTime, formatter.format(price));
+        if(customer.haveTicket()) {
+            ticket givenTicket = customer.getTicket();
+            LocalDateTime currentTime = LocalDateTime.now();
+            Long difference = Duration.between(givenTicket.getEntryTime(), currentTime).getSeconds();
+            double price = difference*0.10;
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            revenue += price;
+            System.out.printf("Car %d has exited lot %d at %tT, it paid %s\n", givenTicket.getCar(), ID, currentTime, formatter.format(price));
 
-        currentCapacity--;
+            currentCapacity--;
+        } else {
+            System.out.println("Invalid Action");
+        }
     }
 
     public int getID() {
         return ID;
+    }
+
+    public int getCurrentCap() {
+        return currentCapacity;
+    }
+
+    public int getMaxCap() {
+        return maxCapacity;
     }
     
     public void getHistory() {
