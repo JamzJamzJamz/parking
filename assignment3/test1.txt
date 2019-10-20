@@ -1,0 +1,15 @@
+Lot sizes:
+1
+10
+
+Car ID's:
+123
+6845
+0192
+
+Car Actions(1 = enter, 2 = exit, 3 = wait):
+1 123
+1 0192
+3 3000
+2 123
+1 6845

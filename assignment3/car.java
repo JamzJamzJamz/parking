@@ -1,8 +1,9 @@
 package assignment3;
 
 public class car {
-    public ticket lotTicket;
-    public int ID;
+    private ticket lotTicket;
+    private int ID;
+    private parkingLot occupying;
 
     public car(int inID) {
         this.ID = inID;
@@ -12,12 +13,24 @@ public class car {
         return ID;
     }
 
+    public ticket getTicket() {
+        return lotTicket;
+    }
+
+    public parkingLot getLot() {
+        return occupying;
+    }
+
+    public void setLot(parkingLot enteredLot) {
+        occupying = enteredLot;
+    }
+
     public void receiveTicket(ticket givenTicket) {
         lotTicket = givenTicket;
     }
 
-    public ticket getTicket() {
-        return lotTicket;
+    public void giveTicket() {
+        lotTicket = null;
     }
 
     public boolean haveTicket() {

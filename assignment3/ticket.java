@@ -2,9 +2,10 @@ package assignment3;
 import java.time.LocalDateTime;
 
 public class ticket {
-    public Long ID;
-    public LocalDateTime entryTime;
-    public int carID;
+    private Long ID;
+    private LocalDateTime entryTime;
+    private int carID;
+
 
     public ticket(LocalDateTime enterTime, Long lotID, int carID) {
         this.entryTime = enterTime;
