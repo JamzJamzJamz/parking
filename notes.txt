@@ -1,0 +1,17 @@
+- Parking Lot has capacity
+- Parking Lot has entrance and exit gates (separate class?)
+- Time-Stamped ticket on entrance of gate (own class)
+- Cars present ticket at exit gate and pay there
+
+Objects/Classes
+- Lot
+- Car
+- Ticket
+- Gate(?)
+- Class for individual parking spots?
+
+
+Lot Class Behavior:
+- Contain Cars
+- Keep track of vacant spaces (capacity - # of cars inside) or (parking space class, number of vacant ones)
+- Do we even need a gate?
