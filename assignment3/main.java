@@ -29,7 +29,13 @@ public class main {
         String test = in.next();
         toyotaCenter.carExit(honda.getTicket());
         */
-        File test1 = new File("D:\\School\\COSC_4353\\parking\\assignment3\\test1.txt");
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Give a file: ");
+
+        //File test1 = new File("D:\\School\\COSC_4353\\parking\\assignment3\\test1.txt");
+        File test1 = new File(in.nextLine());
+        System.out.println(test1.getAbsoluteFile());
         Scanner fileRead = new Scanner(test1);
 
         fileRead.nextLine();
@@ -46,13 +52,11 @@ public class main {
         }
         fileRead.nextLine();
         fileRead.nextLine();
-        fileRead.nextLine();
         //Cars
         while(fileRead.hasNextInt()) {
             int carID = fileRead.nextInt();
             cars.add(new car(carID));
         }
-        fileRead.nextLine();
         fileRead.nextLine();
         fileRead.nextLine();
         while(fileRead.hasNext()) {
@@ -65,17 +69,17 @@ public class main {
                     car enterCar = findCar(lineRead.nextInt());
                     int j = 0;
                     boolean carParked = false;
-                    while(carParked == false) {
+                    while(carParked == false && j < lots.size()) {
                         carParked = lots.get(j).carEnter(enterCar);
                         j++;
                     }
-
+                    
                     break;
                 case 2:
                     //Exit
                     car exitCar = findCar(lineRead.nextInt());
                     parkingLot exitLot = exitCar.getLot();
-                    exitLot.carExit(exitCar.getTicket());
+                    exitLot.carExit(exitCar);
                     break;
                 case 3:
                     //Wait
@@ -88,7 +92,15 @@ public class main {
             }
         }
 
+        System.out.println();
 
+        for(int j = 0; j < lots.size(); j++) {
+            lots.get(j).getHistory();
+            System.out.println();
+        }
+
+
+        in.close();
         fileRead.close();
     }
 
