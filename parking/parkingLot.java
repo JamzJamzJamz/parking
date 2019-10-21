@@ -1,12 +1,12 @@
-package assignment3;
+package parking;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.io.*;
 import java.text.NumberFormat;
 
-import assignment3.ticket;
-import assignment3.car;
+import parking.ticket;
+import parking.car;
 
 public class parkingLot {
     private int ID;

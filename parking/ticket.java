@@ -1,4 +1,4 @@
-package assignment3;
+package parking;
 import java.time.LocalDateTime;
 
 public class ticket {

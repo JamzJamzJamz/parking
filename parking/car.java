@@ -1,4 +1,4 @@
-package assignment3;
+package parking;
 
 public class car {
     private ticket lotTicket;
