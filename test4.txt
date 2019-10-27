@@ -1,6 +1,9 @@
+Group Info:
+0.50 0.80
+0.40 0.75
 Lot sizes:
-0
-0
+0 0
+0 1
 Car ID's:
 1
 2

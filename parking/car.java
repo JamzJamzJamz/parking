@@ -38,7 +38,7 @@ public class car {
     }
 
     public boolean enterLot(parkingLot entering) {
-        if(occupying == null) {
+        if(occupying == null && entering != null) {
             return entering.carEnter(this);
         } else {
             System.out.printf("Car %d cannot enter lot %d, already occupying a lot\n", ID, entering.getID());

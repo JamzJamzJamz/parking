@@ -7,6 +7,7 @@ import java.text.NumberFormat;
 
 import parking.ticket;
 import parking.car;
+import parking.lotGroup;
 
 public class parkingLot {
     private int ID;
@@ -15,14 +16,19 @@ public class parkingLot {
     private long idGenerator;
     private int carsEntered;
     private double revenue;
+    private double rate;
+    private double discount;
+    private lotGroup group;
 
-    public parkingLot(int cap, int lotID) {
+    public parkingLot(int cap, int lotID, lotGroup group) {
         maxCapacity = cap;
         currentCapacity = 0;
         idGenerator = 1;
         this.ID = lotID;
         carsEntered = 0;
         revenue = 0;
+        this.group = group;
+        group.addLot(this);
     } 
 
     public boolean isFull() {
@@ -39,7 +45,7 @@ public class parkingLot {
             customer.setLot(this);
             currentCapacity++;
             idGenerator++;
-            System.out.printf("Car %d has just entered lot %d at %tT\n", customer.getID(), getID(), currentTime);
+            System.out.printf("Car %d has just entered lot %d(Group %s) at %tT\n", customer.getID(), getID(), group.getID(), currentTime);
             carsEntered++;
             return true;
         } else {
@@ -58,7 +64,12 @@ public class parkingLot {
             ticket givenTicket = customer.getTicket();
             LocalDateTime currentTime = LocalDateTime.now();
             Long difference = Duration.between(givenTicket.getEntryTime(), currentTime).getSeconds();
-            double price = difference*0.10;
+            double price;
+            if(difference > 5) {
+                price = difference*rate*discount;
+            } else {
+                price = difference*rate;
+            }
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             revenue += price;
             System.out.printf("Car %d has exited lot %d at %tT, it paid %s\n", givenTicket.getCar(), ID, currentTime, formatter.format(price));
@@ -84,6 +95,14 @@ public class parkingLot {
     public void getHistory() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         System.out.printf("Lot %d Stats\nCars entered: %d\nTotal Revenue: %s\n", ID, carsEntered, formatter.format(revenue));
+    }
+
+    public void setRate(double groupRate) {
+        rate = groupRate;
+    }
+
+    public void setDiscount(double groupDiscount) {
+        discount = groupDiscount;
     }
    
 }

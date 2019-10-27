@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - main",
             "request": "launch",
+            "mainClass": "parking.main",
+            "projectName": "parking_69a1da67"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - main",
+            "request": "launch",
             "mainClass": "assignment3.main"
         }
     ]
